@@ -7,10 +7,6 @@ license = "MIT"
 repository = "https://github.com/solana-mobile/solana-verifiable-build-test"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[[bin]]
-name = "solana-verify"
-path = "src/main.rs"
-
 [package.metadata.binstall]
 pkg-fmt = "bin"
 
@@ -66,3 +62,7 @@ features = [
     # Enable better diagnostics for compile-time UUIDs
     "macro-diagnostics",
 ]
+
+[[bin]]
+name = "solana-verify"
+path = "src/main.rs"
