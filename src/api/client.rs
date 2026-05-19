@@ -10,7 +10,7 @@ use std::thread;
 use std::time::{Duration, Instant};
 
 use crate::api::models::{
-    ErrorResponse, JobResponse, JobStatus, JobVerificationResponse, RemoteStatusResponseWrapper,
+    ErrorResponse, JobResponse, JobStatus, JobVerificationResponse, RemoteStatusResponse,
     VerifyResponse,
 };
 use crate::solana_program::get_program_pda;
@@ -268,11 +268,11 @@ pub async fn get_remote_status(program_id: Address) -> anyhow::Result<()> {
         .build()?;
 
     let response = client
-        .get(format!("{REMOTE_SERVER_URL}/status-all/{program_id}"))
+        .get(format!("{REMOTE_SERVER_URL}/status/{program_id}"))
         .send()
         .await?;
 
-    let status: RemoteStatusResponseWrapper = response.json().await?;
+    let status: RemoteStatusResponse = response.json().await?;
     println!("{status}");
     Ok(())
 }
